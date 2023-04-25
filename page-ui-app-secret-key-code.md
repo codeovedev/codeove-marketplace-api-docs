@@ -8,4 +8,4 @@ Bu tanımlama bazı metotlarda UI uygulamalarından gelen isteklerde ekstra güv
 - `OrderManager.cs > OrderCreate`
 - `OrderManager.cs > OrderSuccess`
 
-[Geri Dön : Readme](README.md)
+[[Ana sayfaya dön!]](README.md)

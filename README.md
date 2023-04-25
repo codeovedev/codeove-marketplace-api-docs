@@ -40,11 +40,11 @@ Projenin solution yapısı görseldeki gibidir.
 Projedeki katmanlı yapılar belirli bir kullanım mantığına göre oluşturulmuştur.
 `Codeove.Marketplace.API > Codeove.Marketplace.Business > Codeove.Marketplace.DataAccess` ieltişimi üzerine kurgulanmıştır.
 
-### Codeove.Marketplace.API Projesi 
+## Codeove.Marketplace.API Projesi 
 `Codeove.Marketplace.Business` projesi ile etkileşime geçerek `*Manager` sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Models` ve `Codeove.Marketplace.Common` projelerini de kullanır.
 
-### Codeove.Marketplace.Business Projesi 
+## Codeove.Marketplace.Business Projesi 
 `Codeove.Marketplace.DataAccess` projesi ile etkileşime geçerek `*Repository` ve `UnitOfWork` sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Models`, `Iyzipay` ve `Codeove.Marketplace.CargoOperations` projelerini de kullanır.
 
-### Codeove.Marketplace.DataAccess Projesi 
+## Codeove.Marketplace.DataAccess Projesi 
 **MongoClient** ya da **EntityFramework**(kullanılmadı ama hazır olarak bulunmaktadır) sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Logger`, `Codeove.Services.Logger` ve `Codeove.Marketplace.Common` projelerini de kullanır. Sadece veri tabanı mantık nesneleri ile çalışarak veri tabanı işlemlerini gerçekleştirir. (İşlem yapılan veri tiplerinin ilgili DTO ya da ViewModel nesnelerine dönüşümü ile ilgilenmez.)

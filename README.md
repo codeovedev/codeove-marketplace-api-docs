@@ -13,3 +13,29 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel de belirtilen şekilde değişiklikler yapılmıştır. **Bu güncellemelerin varlığını kontrol ediliniz.**
 
 ![fixes](/images/fixes.jpg)
+
+## Solution Yapısı
+Projenin solution yapısı görseldeki gibidir. 
+
+- `Logging` klasöründe Loglama ile ilgili proje örnekleri yer alır. 
+- `MFramework` klasöründe api altyapısında kullanılan base yapılar ve kütüphanelere ait projeler yer almaktadır. 
+- `Services` klasörü altında ödeme sistemi olan(Iyzico) ve kargo sistemi olan (Ceva,MNG) entegrasyonlarına ait kodlar yer almaktadır.
+- `Codeove.Marketplace.API` api projesidir.
+- `Codeove.Marketplace.Business` manager(service) gibi yapıları içeren projedir.
+- `Codeove.Marketplace.DataAccess` veri tabanı işlemleri için Repository Pattern, UnitOfWork gibi yapıları içeren projedir.
+- `Codeove.Marketplace.Entities` veri tabanı varlık nesneleri gibi yapıları içeren projedir.
+- `Codeove.Marketplace.Models` DTO ya da ViewModel gibi yapıları içeren projedir.
+- `Codeove.Marketplace.Common` proje genelinde ortak kullanılan  yapıları içeren projedir.
+
+## Projenin İşleyiş Mimarisi
+Projedeki katmanlı yapılar belirli bir kullanım mantığına göre oluşturulmuştur.
+`Codeove.Marketplace.API > Codeove.Marketplace.Business > Codeove.Marketplace.DataAccess` ieltişimi üzerine kurgulanmıştır.
+
+### Codeove.Marketplace.API Projesi 
+`Codeove.Marketplace.Business` projesi ile etkileşime geçerek `*Manager` sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Models` ve `Codeove.Marketplace.Common` projelerini de kullanır.
+
+### Codeove.Marketplace.Business Projesi 
+`Codeove.Marketplace.DataAccess` projesi ile etkileşime geçerek `*Repository` ve `UnitOfWork` sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Models`, `Iyzipay` ve `Codeove.Marketplace.CargoOperations` projelerini de kullanır.
+
+### Codeove.Marketplace.DataAccess Projesi 
+MongoClient ya da EntityFramework(kullanılmadı ama hazır olarak bulunmaktadır) sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Logger`, `Codeove.Services.Logger` ve `Codeove.Marketplace.Common` projelerini de kullanır. Sadece veri tabanı mantık nesneleri ile çalışarak veri tabanı işlemlerini gerçekleştirir. (İşlem yapılan veri tiplerinin ilgili DTO ya da ViewModel nesnelerine dönüşümü ile ilgilenmez.)

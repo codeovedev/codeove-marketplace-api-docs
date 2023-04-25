@@ -10,4 +10,6 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 [Open Online Swagger Editor - Marketplace API](https://editor.swagger.io?url=https://raw.githubusercontent.com/muratbaseren/codeove-marketplace-api-docs/master/marketplace-api.yaml)
 
 ## Bazı Hata Gidermeleri
+Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel de belirtilen şekilde değişiklikler yapılmıştır. **Bu güncellemelerin varlığını kontrol ediliniz.**
+
 ![fixes](/images/fixes.jpg)

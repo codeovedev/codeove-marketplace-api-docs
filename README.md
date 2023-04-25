@@ -39,7 +39,7 @@ Projenin solution yapısı görseldeki gibidir.
 ## Projenin İşleyiş Mimarisi
 Projedeki katmanlı yapılar belirli bir kullanım mantığına göre oluşturulmuştur.<br>
 `Codeove.Marketplace.API > Codeove.Marketplace.Business > Codeove.Marketplace.DataAccess` ieltişimi üzerine kurgulanmıştır.<br><br>
-Özetle, yapı temel olarak 3 katmanlı bir mimari üzerine kurgulanmış ve katmanların ortak kullandığı diğer projeler olarak geliştirilmiştir. Projelerin çokluluğu tamamen yapının daha soyutlama temellerine dayanması için projelere ayrılmıştır.
+Özetle, yapı temel olarak 3 katmanlı bir mimari üzerine kurgulanmış ve katmanların ortak kullandığı diğer projeler olarak geliştirilmiştir. Projelerin çokluluğu tamamen yapının SOLID temellerine uygun olması için projelere ayrılmıştır.
 
 ## Codeove.Marketplace.API Projesi 
 `Codeove.Marketplace.Business` projesi ile etkileşime geçerek `*Manager` sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Models` ve `Codeove.Marketplace.Common` projelerini de kullanır.

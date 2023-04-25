@@ -7,3 +7,5 @@ Bu tanımlama bazı metotlarda UI uygulamalarından gelen isteklerde ekstra güv
 - `WebSiteOrdersController.cs > SetOrderPaymentFailed`
 - `OrderManager.cs > OrderCreate`
 - `OrderManager.cs > OrderSuccess`
+
+[Geri Dön : Readme](README.md)

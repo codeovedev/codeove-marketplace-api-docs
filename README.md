@@ -17,7 +17,7 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 [Yeni Entity Oluşumu ve API ye Bağlama](page-ui-app-secret-key-code.md)<br>
 
 ## Bazı Hata Gidermeleri
-Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel de belirtilen şekilde değişiklikler yapılmıştır. **Bu güncellemelerin varlığını kontrol ediliniz.**
+Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel de belirtilen şekilde değişiklikler yapılmıştır. **Bu güncellemelerin varlığını kontrol ediniz. UI tarafındaki olası hata çıkarma durumlarını kontrol ediniz.**
 
 ![fixes](/images/fixes.jpg)
 

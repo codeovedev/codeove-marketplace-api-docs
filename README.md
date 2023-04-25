@@ -9,7 +9,7 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 
 [Open Online Swagger Editor - Marketplace API](https://editor.swagger.io?url=https://raw.githubusercontent.com/muratbaseren/codeove-marketplace-api-docs/master/marketplace-api.yaml)
 
-## İçerikler
+## Sayfalar
 [UI App Secret Key Code Tanım Düzenlemesi](page-ui-app-secret-key-code.md)<br>
 [Veri Tabanı Oluşum ve Seed Data](page-ui-app-secret-key-code.md)<br>
 [Token Oluşturma](page-ui-app-secret-key-code.md)<br>

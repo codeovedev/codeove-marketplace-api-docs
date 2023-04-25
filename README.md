@@ -17,6 +17,8 @@ Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel
 ## Solution Yapısı
 Projenin solution yapısı görseldeki gibidir. 
 
+![Proje solution mimarisi](/images/solution-projects.jpg?raw=true)
+
 - `Logging` klasöründe Loglama ile ilgili proje örnekleri yer alır. 
 - `MFramework` klasöründe api altyapısında kullanılan base yapılar ve kütüphanelere ait projeler yer almaktadır. 
 - `Services` klasörü altında ödeme sistemi olan(Iyzico) ve kargo sistemi olan (Ceva,MNG) entegrasyonlarına ait kodlar yer almaktadır.

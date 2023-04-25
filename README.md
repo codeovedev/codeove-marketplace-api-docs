@@ -5,7 +5,7 @@ https://editor.swagger.io/ adresinden api projesinin swagger json verisi ile swa
 **Güncelleme Tarihi :**
 25.04.2023
 
-[Open Online Swagger Editor - Marketplace API](https://editor.swagger.io/?url=https://github.com/muratbaseren/codeove-marketplace-api-docs/marketplace-api.yaml)
+[Open Online Swagger Editor - Marketplace API](https://raw.githubusercontent.com/muratbaseren/codeove-marketplace-api-docs/master/marketplace-api.yaml)
 
 ## Bazı Hata Gidermeleri
 ![fixes](/images/fixes.jpg)

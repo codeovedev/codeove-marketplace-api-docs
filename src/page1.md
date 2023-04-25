@@ -1,2 +1,0 @@
-..
-[Ana Sayfa](../README.md)

@@ -1,2 +1,2 @@
 ..
-[Ana Sayfa](../../README.md)
+[Ana Sayfa](../README.md)

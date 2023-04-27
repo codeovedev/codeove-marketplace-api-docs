@@ -17,6 +17,7 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 [Yeni Entity Oluşumu ve API ye Bağlama](page-ui-app-secret-key-code.md)<br>
 [Kategori Tanımları](kategori-tanimlari.md)<br>
 [Ürün Oluşturma](urun-olusturma.md)<br>
+[Ürün Oluşturma](urun-varyanti.md)<br>
 
 ## Bazı Hata Gidermeleri
 Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel de belirtilen şekilde değişiklikler yapılmıştır. **Bu güncellemelerin varlığını kontrol ediniz. UI tarafındaki olası hata çıkarma durumlarını kontrol ediniz.**
@@ -52,8 +53,7 @@ Projedeki katmanlı yapılar belirli bir kullanım mantığına göre oluşturul
 
 
 
-## Ürün Varyantı
-Örneğin bir ayakkabının `Beden` ve `Renk` özelliğine göre **fiyatı, stok miktarı** gibi değerleri değişebilir. Yani aynı ürünün özelliklerine göre farklı ürün gibi gösterilmesi gereken durumlar **varyant** olarak karşılık bulur. Varyanta göre fiyat ve stok miktarı **değişebilir**. Varyantlar ürünün tanımlı olduğu kategorinin özelliklerinde `Varyant Mı ?` seçeneği işaretli olan özelliklere göre tanımlanabilir bunun haricinde bir ürüne varyant ekleme şansımız yoktur. Yani bir ürüne yeni varyant eklemek istiyorsak öncelikle kategori özelliklerini kontrol etmeli sonrasında ürünün varyantlarını eklemeliyiz.
+
 
 
 ## Temp Tablolar

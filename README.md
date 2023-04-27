@@ -19,6 +19,7 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 [Ürün Oluşturma](urun-olusturma.md)<br>
 [Ürün Varyantları](urun-varyanti.md)<br>
 [Temp Tablolar](temp-tablolar.md)<br>
+[Komisyon Oranları](komisyon-oranlari.md)<br>
 
 ## Bazı Hata Gidermeleri
 Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel de belirtilen şekilde değişiklikler yapılmıştır. **Bu güncellemelerin varlığını kontrol ediniz. UI tarafındaki olası hata çıkarma durumlarını kontrol ediniz.**
@@ -52,8 +53,7 @@ Projedeki katmanlı yapılar belirli bir kullanım mantığına göre oluşturul
 `Codeove.Marketplace.DataAccess` projesi ile etkileşime geçerek `*Repository` ve `UnitOfWork` sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Models`, `Iyzipay` ve `Codeove.Marketplace.CargoOperations` projelerini de kullanır.
 
 
-## Komisyon Oranları
-Komisyon oranları kategori özelinde tanımlanmaktadır. Kategoriye ait komisyon oranı ile ürün satışlarından pazaryeri kazançları oluşmaktadır.
+
 
 
 

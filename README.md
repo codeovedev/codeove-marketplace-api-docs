@@ -15,6 +15,8 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 [Token Oluşturma](page-ui-app-secret-key-code.md)<br>
 [Yapı Hakkında Önemli Detaylar](page-ui-app-secret-key-code.md)<br>
 [Yeni Entity Oluşumu ve API ye Bağlama](page-ui-app-secret-key-code.md)<br>
+[Kategori Tanımları](kategori-tanimlari.md)<br>
+[Ürün Oluşturma](urun-olusturma.md)<br>
 
 ## Bazı Hata Gidermeleri
 Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel de belirtilen şekilde değişiklikler yapılmıştır. **Bu güncellemelerin varlığını kontrol ediniz. UI tarafındaki olası hata çıkarma durumlarını kontrol ediniz.**
@@ -48,13 +50,6 @@ Projedeki katmanlı yapılar belirli bir kullanım mantığına göre oluşturul
 `Codeove.Marketplace.DataAccess` projesi ile etkileşime geçerek `*Repository` ve `UnitOfWork` sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Models`, `Iyzipay` ve `Codeove.Marketplace.CargoOperations` projelerini de kullanır.
 
 
-
-## Kategori Tanımları
-Ürün eklemelerine başlamadan önce mutlaka tüm kategoriler sisteme doğru bir şekilde eklenmelidir. Kategorileri oluştururken dikkat edilmesi gereken en önemli unsur  `kategori özelliklerinin ve değerlerdirinin` tanımlanmasıdır. Çünkü kategori ye tanımlanan özellikler ürün oluştururken seçilen kategoriye göre özellikleri tek tek girilir. `Varyant` olarak seçilen kategori özellikleri ürün ekleme sırasında ürünün varyantlarını eklemek için kullanılır. Bu sadece bir ürüne birden fazla varyant tanımı yapılabilir. Varyanlar **benzersiz** olacak şekilde ürünler tekilleştirilir. Pazaryeri sitesinde kategoriye ait sayfaya girildiğinde sol tarafta çıkan filtreler de yine aynı şekilde kategori özelliklerinden alınmaktadır. `Filtreleme seçeneği işaretli` olan özellikler ilgili kategorinin sayfasında **filtre** de görünür olacaktır.
-
-
-## Ürün Oluşturma
-Satıcı ilk ürün oluşturduğunda öncelikli olarak ürün kaydı pazar yeri yöneticisine yeni ürün önerisi olarak `ProductCommits` tablosuna kayıt atılır. Sonrasında yönetici bu kaydı kontrol eder eğer yeni bir olarak yada bir ürünün varyantı olarak sisteme ürün olarak ekler. Ekledikten sonra `ProductCommits` tablosundaki kayıt silinir ve `Products` tablosuna insert edilir. Artık öneri değil bir ürün haline gelir ve ekleyen satıcı da dahil olmak üzere tüm satıcılar o ürünü satışa açabilir duruma gelir. Ürün onaylanana kadar satıcı ile yönetici ürün özelinde mesajlaşarak ürünün güncel halini birlikte oluştururlar.
 
 
 ## Ürün Varyantı

@@ -47,5 +47,77 @@ Projedeki katmanlı yapılar belirli bir kullanım mantığına göre oluşturul
 ## Codeove.Marketplace.Business Projesi 
 `Codeove.Marketplace.DataAccess` projesi ile etkileşime geçerek `*Repository` ve `UnitOfWork` sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Models`, `Iyzipay` ve `Codeove.Marketplace.CargoOperations` projelerini de kullanır.
 
-## Codeove.Marketplace.DataAccess Projesi 
-**MongoClient** ya da **EntityFramework**(kullanılmadı ama hazır olarak bulunmaktadır) sınıfları ile işlemleri ilerletir. Aynı zamanda `Codeove.Marketplace.Entities` , `Codeove.Marketplace.Logger`, `Codeove.Services.Logger` ve `Codeove.Marketplace.Common` projelerini de kullanır. Sadece veri tabanı mantık nesneleri ile çalışarak veri tabanı işlemlerini gerçekleştirir. (İşlem yapılan veri tiplerinin ilgili DTO ya da ViewModel nesnelerine dönüşümü ile ilgilenmez.)
+
+
+## Kategori Tanımları
+Ürün eklemelerine başlamadan önce mutlaka tüm kategoriler sisteme doğru bir şekilde eklenmelidir. Kategorileri oluştururken dikkat edilmesi gereken en önemli unsur  `kategori özelliklerinin ve değerlerdirinin` tanımlanmasıdır. Çünkü kategori ye tanımlanan özellikler ürün oluştururken seçilen kategoriye göre özellikleri tek tek girilir. `Varyant` olarak seçilen kategori özellikleri ürün ekleme sırasında ürünün varyantlarını eklemek için kullanılır. Bu sadece bir ürüne birden fazla varyant tanımı yapılabilir. Varyanlar **benzersiz** olacak şekilde ürünler tekilleştirilir. Pazaryeri sitesinde kategoriye ait sayfaya girildiğinde sol tarafta çıkan filtreler de yine aynı şekilde kategori özelliklerinden alınmaktadır. `Filtreleme seçeneği işaretli` olan özellikler ilgili kategorinin sayfasında **filtre** de görünür olacaktır.
+
+
+## Ürün Oluşturma
+Satıcı ilk ürün oluşturduğunda öncelikli olarak ürün kaydı pazar yeri yöneticisine yeni ürün önerisi olarak `ProductCommits` tablosuna kayıt atılır. Sonrasında yönetici bu kaydı kontrol eder eğer yeni bir olarak yada bir ürünün varyantı olarak sisteme ürün olarak ekler. Ekledikten sonra `ProductCommits` tablosundaki kayıt silinir ve `Products` tablosuna insert edilir. Artık öneri değil bir ürün haline gelir ve ekleyen satıcı da dahil olmak üzere tüm satıcılar o ürünü satışa açabilir duruma gelir. Ürün onaylanana kadar satıcı ile yönetici ürün özelinde mesajlaşarak ürünün güncel halini birlikte oluştururlar.
+
+
+## Ürün Varyantı
+Örneğin bir ayakkabının `Beden` ve `Renk` özelliğine göre **fiyatı, stok miktarı** gibi değerleri değişebilir. Yani aynı ürünün özelliklerine göre farklı ürün gibi gösterilmesi gereken durumlar **varyant** olarak karşılık bulur. Varyanta göre fiyat ve stok miktarı **değişebilir**. Varyantlar ürünün tanımlı olduğu kategorinin özelliklerinde `Varyant Mı ?` seçeneği işaretli olan özelliklere göre tanımlanabilir bunun haricinde bir ürüne varyant ekleme şansımız yoktur. Yani bir ürüne yeni varyant eklemek istiyorsak öncelikle kategori özelliklerini kontrol etmeli sonrasında ürünün varyantlarını eklemeliyiz.
+
+
+## Temp Tablolar
+Pazaryeri sitesinde ürünleri göstermek için satıcı satıcı gezip satışta olan ürünlerini tek tek bulup aynı ürünleri gruplayarak liste fiyatını hesaplayıp ekranda göstermek gerekiyor. Bu filtrelemeleri ürün listeleme aşamasında yapmak yerine iki tane temp tablo oluşturarak tüm bu verilerin bu iki tabloda merge edilerek saklanması sağlanmıştır. Web sitesinde ürün listeleme yaparken diğer tablolarda kayıt aramak yerine doğrudan bu tablolar üzerinden ürün listemele işlemleri yapılmaktadır. Bu tabloların verileri bir `scheduler service` aracılığı ile günde bir sefer tümü oluşturulmaktadır. **Bunun haricinden gün için bir sipariş geldiğinde veya herhangi bir sebeple ürün güncellemesi yapıldığında bu tablodaki ürün bilgileri update edilmektedir.**
+
+`tempMerchantProductLists` : Satıcı bazında ürünlerin listesinin bulunduğu tablodur. Aynı ürün farklı satıcılarda varsa bu tabloda satıcı bazında çoklayarak tutulmaktadır.
+
+`tempProductLists` : Tüm ürünler tekil olarak bu tabloda tutulmaktadır. En düşük satış fiyatına sahip satıcının bilgileri ile bu tabloda tekil olarak ürün kaydı bulunur.
+
+
+
+## Komisyon Oranları
+Komisyon oranları kategori özelinde tanımlanmaktadır. Kategoriye ait komisyon oranı ile ürün satışlarından pazaryeri kazançları oluşmaktadır.
+
+
+
+## Sipariş İşlemleri
+Pazaryeri sitesi üzerinden bir sipariş verildiğinde sırasıyla aşağıdaki süreçlerden geçmektedir;
+
+`1.Adım` Sipariş kaydı oluşturulur ve iyzico üzerinde ödeme kaydı açılır. Iyzico dan gelen bir anahtar değer sayesinde sipariş ile iyzico ödeme kaydı ilişkilendirilir.
+
+`2.Adım` Sipariş satın alınan satıcının onayına düşer. Onaylama işlemi yapılana kadar site üzerinden kullanıcı sipariş siparişi iptal ederek iyzico üzerinden istek atılarak ücret iadesini alabilir.
+
+`3.Adım` Satıcı siparişi iptal edebilir veya onaylayabilir. İptal etmesi durumunda ücret iadesi için iyzico üzerinden istek atılır. Onay verildiği takdirde satın alan kullanıcı sipariş iptal etme işlemi yapamaz. Ancak ürün eline ulaştıktan sonra iade süreci başlatabilir.
+
+`4.Adım` Satıcı tarafından onaylanan sipariş kargolanmayı bekler. Satıcı göndereceği ürünleri kargoya vermek için panel üzerinden paket oluşturarak paketlere özel barkodu olan bir çıktı üretir. Bu aşamada kargo entegrasyonu ile kargo firmasının veritabanına bilgiler aktarılır. Satıcı kargo firmasına gittiğinde görevli aldığı barkod okutarak teslimat adresi vb tüm bilgileri sistemlerinde görerek gönderiyi hızlıca kabul eder. 
+
+`5.Adım` Belirli sürelerle çalışan bir servis sayesinde ürünün kargoya verilme durumu kargo entegrasyon servisleri aracılığı ile kontrol edilerek durum alanı güncellenir. Durum değişikliklerinde son kullanıcıya bildirimler gönderilir.
+
+`6.Adım` Kargo firması paket teslim ettiğinde yine aynı entegrasyon servisi ile kontrol edilerek Teslim Edildi olarak güncellenir ve 15 günlük iade süreci başlar.
+
+`7.Adım` Bu süre zarfı içerisinden son kullanıcı iade talebinde bulunabilir.
+
+`8.Adım` İade talebinde bulunmak için sistemden bir kayıt açarak kendisine İade Kodu üretililir. Son kullanıcı kargo şubesine gittiğinde bu kod ile yine hiç bir adres bilgisi vermeden kargo entegrasyon servisleri ile satıcıya ulaşması sağlanır. Satıcının iadeyi onaylaması durumunda ücret iadesi iyzico servisleri ile yapılır ve sipariş sonuçlanmış olur. Satıcı iadeyi kabul etmez ise pazaryeri yönetimi ile sipariş itilaflı durumuna düşer ve pazaryeri yönetimi ile sipariş nihai sonuca ulaştırılır.
+
+`9.Adım` Alıcı iade talebinden bulunmadığı takdirde 14 günlük iade süreci tamamlandıktan sonra, belirli aralıklarla çalışan bir servis ile siparişin ücretlerinin (satıcıya aktrılacak ücret ve pazaryeri komisyonu ücreti) gerekli hesaplara aktarılması için iyzico ya onaylama işlemi yapılır. Bu onaylamanın sonrasında iyzico ödeme prosedürlerine uygun olarak ödeler iyzico tarafından ilgili hesaplara aktarılır.
+
+
+## Excel Dosyasından Ürün Import Etme
+
+Satıcı ve admin panelinden import etmek istediğinin kategoriye özel örnek bir excel dosyası indirilir. Örnek dosyaya uygun olarak dosya hazırlanır. Exceldeki tüm kolonlar girilerek import işlemi yapılabilir. (ÜrünId/VaryanId alanına sayısal kendi db nizdeki ID yi yazabilirsiniz bu değer ObjectId olarak convert edilir)
+
+
+## Zamanlaşmış Görevler
+
+`CreateTempProductList.CreateList` Web sitesinde ürünleri hızlıca gösterebilmek adına otomatik dolduran tablodur. Yeni ürün ekleme, güncelleme işleminde de bu tabloya hızlıca veriler eklenmekte ve güncellenmektedir. (Tablo içerikleri Temp Tablolar başlığı altında detaylı olarak anlatılmıştır)
+  
+`CreateTempMerchantProductList.CreateList` Diğer tablonun aynı amaçla olan ve Satıcı bilgilerinin de içinde bulunduğu hali diyebiliriz. Yeni ürün ekleme, güncelleme işleminde de bu tabloya hızlıca veriler eklenmekte ve güncellenmektedir. (Tablo içerikleri Temp Tablolar başlığı altında detaylı olarak anlatılmıştır)
+  
+`SendAlarmMail.Send` Gelince Haber Ver, Fiyat Alarm Listesi gibi müşterilerin kurmuş olduğu alarmları kontrol edip tetikleyerek ilgili mail gönderimlerin yapılmasını sağlamaktadır.
+  
+`SitemapGenerate.Generate` Site map dosyasını yeniden üretir.
+  
+`SitemapGenerate.GenerateCimriXML` Cimri uygulamasının istediği formatta xml dosyasını yeniden üretir.
+  
+`MngKargoUpdateOrderDelivered.UpdateStatus` İsmi mng ancak entegrasyon olan tüm kargo firmaları için çalışmaktadır. Kargoya verildiğini, teslim edildiğini anlayıp sipariş durumlarını günceller.
+  
+`IyzicoCreateApprovalRequest.CreateApprovalReques` Sipariş tarihlerine uygun olacak şekilde iyzico ödemelerinin satıcılara ödenmesi için onay verme işlemini iyzico ya bildirir.
+  
+`ProductExcelExport.Process` azure blob storage üzerine "products-{DateTime.Now.ToShortDateString()}.xlsx" ismiyle tüm ürünlerin excel dosyasını oluşturur. Geçici bir kontrol için eklenmişti sistem işlleyişi ile bir ilgisi yok.
+  
+`IsNewProductStatusChange.CheckProduct` Ürün ekleme tarihi 3 günü geçen ve yeni ürün olarak işaretlenen ürünlerin yeni ürün etiketini kaldırma işlemini yapar.

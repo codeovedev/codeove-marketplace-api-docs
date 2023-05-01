@@ -13,7 +13,7 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 [UI App Secret Key Code Tanım Düzenlemesi](page-ui-app-secret-key-code.md)<br>
 [Veri Tabanı Oluşum ve Seed Data](create-database-seed-data.md)<br>
 [Token Oluşturma](token-olusturma.md)<br>
-[Yapı Hakkında Önemli Detaylar](page-ui-app-secret-key-code.md)<br>
+[Alt Yapı Detayları](infrastructure-details.md)<br>
 [Yeni Entity Oluşumu ve API ye Bağlama](page-ui-app-secret-key-code.md)<br>
 [Kategori Tanımları](kategori-tanimlari.md)<br>
 [Ürün Oluşturma](urun-olusturma.md)<br>

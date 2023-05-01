@@ -14,7 +14,7 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 [Veri Tabanı Oluşum ve Seed Data](create-database-seed-data.md)<br>
 [Token Oluşturma](token-olusturma.md)<br>
 [Alt Yapı Detayları](infrastructure-details.md)<br>
-[Yeni Entity Oluşumu ve API ye Bağlama](page-ui-app-secret-key-code.md)<br>
+[Yeni Entity Oluşumu ve API ye Bağlama](new-entity-and-api-controller.md)<br>
 [Kategori Tanımları](kategori-tanimlari.md)<br>
 [Ürün Oluşturma](urun-olusturma.md)<br>
 [Ürün Varyantları](urun-varyanti.md)<br>

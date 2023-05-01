@@ -29,6 +29,13 @@ Elinizdeki API kodlarında aşağıdaki görsel de yer alan metotlar da, görsel
 
 ![fixes](/images/fixes.jpg)
 
+## Swagger Üzerindeki Detaylar
+Swagger üzerinde endpoint açıklamaları detaylandırıldı.
+![swagger comments](/images/swagger-comments.jpg)
+
+Swagger üzerinde post verisi için `schema` verilerinden zorunlu alan ve alan tipleri hakkında bilgi edinilebilir. Ayrıca her endpoint için `200(ok)(success)` response tipi detay işlendi. Başarılı işlem sonucunda dönen schema görülebilir.
+![swagger details](/images/swagger-detail.jpg)
+
 ## Solution Yapısı
 Projenin solution yapısı görseldeki gibidir. 
 

@@ -8,7 +8,7 @@ https://editor.swagger.io/ adresinden api projesinin swagger.json verisi ile swa
 **Güncelleme Tarihi :** 04.05.2023
 
 Eğer repo public ise aşağıdaki link ile doğrudan online swagger editor üzerinde swagger açılacaktır. Private ise 404 uyarısı verecektir(Bir üst satırdaki yaml dosyası içeriği kopyalanarak, online swagger editor de yaml içeriğini uygulayablirsiniz).<br>
-[Open Online Swagger Editor - Marketplace API](https://editor.swagger.io?url=https://raw.githubusercontent.com/muratbaseren/codeove-marketplace-api-docs/master/marketplace-api.yaml)
+[Open Online Swagger Editor - Marketplace API](https://editor.swagger.io?url=https://raw.githubusercontent.com/codeovedev/codeove-marketplace-api-docs/master/marketplace-api.yaml)
 
 ## Sayfalar
 [UI App Secret Key Code Tanım Düzenlemesi](page-ui-app-secret-key-code.md)<br>

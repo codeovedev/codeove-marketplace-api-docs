@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
-  title: Codeove Marketplace API
+  title: Marketpalce API
   contact:
-    name: Codeove Marketplace API
+    name: Marketpalce API
     email: contact@codeove.com
   version: '1.0'
 paths:
@@ -846,7 +846,7 @@ paths:
     post:
       tags:
         - CargoPrices
-      summary: Create a new Cart.
+      summary: Create a new cargo price
       requestBody:
         description: The model.
         content:
@@ -964,7 +964,7 @@ paths:
     delete:
       tags:
         - CargoPrices
-      summary: Delete specific Cart.
+      summary: Delete specific a cargo price.
       parameters:
         - name: id
           in: path
@@ -989,7 +989,7 @@ paths:
     get:
       tags:
         - Carts
-      summary: Get specific Cart.
+      summary: Tokendaki üyeye ait sepet bilgisini döner
       responses:
         '200':
           description: Success
@@ -1006,7 +1006,7 @@ paths:
     post:
       tags:
         - Carts
-      summary: Create a new Cart.
+      summary: Sepete ürün eklemek için kullanılır. Üye bilgisi token'dan alınır
       requestBody:
         description: The model.
         content:
@@ -1198,7 +1198,7 @@ paths:
     put:
       tags:
         - Carts
-      summary: Update Order info.
+      summary: Siparişin teslimat adresi, fatura adresi ve sipariş notu bilgilerini günceller
       parameters:
         - name: id
           in: path
@@ -1235,7 +1235,7 @@ paths:
     put:
       tags:
         - Carts
-      summary: Sipariş oluşturma öncesi Taksit bilgilerini Update yapıyor.
+      summary: Sipariş oluşturma öncesi Taksit bilgilerini Update yapıyor. Üyenin seçtiği taksit sayısına göre.
       requestBody:
         description: The model.
         content:
@@ -1265,7 +1265,7 @@ paths:
     put:
       tags:
         - Carts
-      summary: Sepetteki taksit alanını resetliyor.
+      summary: Sepetteki taksit alanını resetliyor. Peşin ödeme (tek çekim) şeklinde güncelleme yapıyor
       responses:
         '200':
           description: Success
@@ -1283,7 +1283,7 @@ paths:
     delete:
       tags:
         - Carts
-      summary: Delete specific Cart.
+      summary: Token üzerinden gelen üyeye ait sepeti tüm ürünleriyle birlikte siler
       parameters:
         - name: id
           in: path
@@ -1339,7 +1339,7 @@ paths:
     get:
       tags:
         - Categories
-      summary: Tüm kategorileri döndürür.
+      summary: Tüm kategorileri döndürür. Varsa cache'den döner, yoksa veritabanından döner ve cache ekleme yapar.
       responses:
         '200':
           description: Success
@@ -1386,7 +1386,7 @@ paths:
     get:
       tags:
         - Categories
-      summary: Kategoriler cacheden getirir.
+      summary: Tüm kategorileri döndürür. Varsa cache'den döner ve tekrar set eder, yoksa veritabanından döner ve cache ekleme yapar.
       responses:
         '200':
           description: Success
@@ -5186,7 +5186,7 @@ paths:
     post:
       tags:
         - MerchantProductListOptions
-      summary: Searches the product.
+      summary: Searches the product. Satıcıya ait ürünler içerisinde arama işlemi yapar
       requestBody:
         description: The model.
         content:
@@ -5306,7 +5306,7 @@ paths:
     get:
       tags:
         - MerchantProducts
-      summary: Satıcının ürünlerini dışarı çıkarır
+      summary: Satıcının ürünlerini excel dosyasına çıkarır
       parameters:
         - name: id
           in: path
@@ -5459,7 +5459,7 @@ paths:
     post:
       tags:
         - MerchantProducts
-      summary: Satış açıp-kapama
+      summary: Satışa açıp-kapama işlemini yapar
       parameters:
         - name: productId
           in: path
@@ -5490,7 +5490,7 @@ paths:
     post:
       tags:
         - MerchantProducts
-      summary: Satıcıya ait ürünlerin excelden güncellenmesini sağlar.
+      summary: Satıcıya ait ürünlerin excelden import edilerek güncellenmesini sağlar.
       requestBody:
         content:
           multipart/form-data:
@@ -5999,7 +5999,7 @@ paths:
     put:
       tags:
         - Merchants
-      summary: Update merchant about.
+      summary: Satıcının hakkımızda yazısının ve sektörler listesinin güncellenemesi için kullanılır
       parameters:
         - name: id
           in: path
@@ -6365,7 +6365,7 @@ paths:
     get:
       tags:
         - OrderPayments
-      summary: Teslim edilen siparişlerin listelenmesi
+      summary: Siparişlerin ödeme hareketleri listesini döner
       parameters:
         - name: orderId
           in: path
@@ -6420,7 +6420,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Sipariş onaylama
+      summary: Sipariş onaylama işlemi yapar
       parameters:
         - name: orderId
           in: path
@@ -6445,7 +6445,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Onay bekleyenler siparişler
+      summary: Onay bekleyenler siparişlerin listesini döner
       responses:
         '200':
           description: Success
@@ -6517,7 +6517,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Teslim edilen siparişlerin listelenmesi
+      summary: Teslim edilen siparişlerin listesini döner
       responses:
         '200':
           description: Success
@@ -6535,7 +6535,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: Bekleyen iade taleplerinin listelenmesi
+      summary: Bekleyen iade taleplerinin listesini döner
       responses:
         '200':
           description: Success
@@ -6553,7 +6553,7 @@ paths:
     get:
       tags:
         - Orders
-      summary: itilaflı siparişlerin listelenmesi
+      summary: itilaflı siparişlerin listesini döner
       responses:
         '200':
           description: Success
@@ -6759,7 +6759,7 @@ paths:
     post:
       tags:
         - Orders
-      summary: Bir siparişin kontratlarını listeler
+      summary: Bir siparişe ait sözelşmeleri listeler
       parameters:
         - name: orderId
           in: path
@@ -7049,7 +7049,7 @@ paths:
     post:
       tags:
         - Orders
-      summary: Sİpariş detayında mesaj göndermek
+      summary: Sipariş detayında mesaj göndermek
       requestBody:
         description: Send message request.
         content:
@@ -7267,7 +7267,7 @@ paths:
     post:
       tags:
         - ProductCommits
-      summary: Create a new Product
+      summary: Create a new Product. Bu adresten eklenen ürün geçici tablolarda tutulur. Adminin onayına sunulur, onaylandıktan sonra ilgili geçici tablodan silinerek gerçek ürünler tablosuna yazılır. Onaylama yapılana kadar ürünler tablosunda kayıt olmaz.
       requestBody:
         description: The model.
         content:
@@ -7754,7 +7754,7 @@ paths:
     get:
       tags:
         - ProductCommits
-      summary: Ürün import etmek için kategoriye göre örnek excel oluşturmak için yazıldı.
+      summary: Ürün import etmek amacıyla kategoriye göre örnek excel oluşturmak için yazıldı.
       parameters:
         - name: categoryId
           in: path
@@ -7825,7 +7825,7 @@ paths:
     get:
       tags:
         - ProductListOptions
-      summary: List all products.
+      summary: List all product list options.
       responses:
         '200':
           description: Success
@@ -8395,7 +8395,7 @@ paths:
     put:
       tags:
         - Products
-      summary: Tüm ürünlerin Slug alanlarını günceller.
+      summary: Tüm ürünlerin image alanlarını günceller.
       responses:
         '200':
           description: Success
@@ -8403,7 +8403,7 @@ paths:
     put:
       tags:
         - Products
-      summary: Tüm ürünlerin attributelerini
+      summary: Tüm ürünlerin attributelerini günceller
       responses:
         '200':
           description: Success
@@ -9549,7 +9549,7 @@ paths:
     get:
       tags:
         - WebSiteCategories
-      summary: Ana Kategori - Alt1 Kategori - Alt2 Kategori
+      summary: Kategorilerin sadece base verileriyle birlikte ağaç yapısı şeklinde dönen metotdur. Ana Kategori - Alt1 Kategori - Alt2 Kategori
       responses:
         '200':
           description: Success
@@ -9680,7 +9680,7 @@ paths:
     get:
       tags:
         - WebSiteCategories
-      summary: Merchant product list with categoruYd.
+      summary: Bir kategoriye ait ürünlerin bir satıcı bazında listesini dönen metotdur.
       parameters:
         - name: merchantId
           in: path
@@ -10806,7 +10806,7 @@ paths:
     get:
       tags:
         - WebSiteOrders
-      summary: Siparişin seçilen detayını getirir.
+      summary: Sipariş detay üzerinden siparişin header bilgilerini döner
       parameters:
         - name: orderNo
           in: path
@@ -10836,7 +10836,7 @@ paths:
     get:
       tags:
         - WebSiteOrders
-      summary: Siparişin seçilen detayını getirir.
+      summary: Siparişin detayı üzerinden siparişe ait ürünleri getirir.
       parameters:
         - name: orderNo
           in: path
@@ -10910,7 +10910,7 @@ paths:
     get:
       tags:
         - WebSiteOrders
-      summary: Banka bilgisine göre üyenin sepetindeki ürünlere taksit sağlanması.
+      summary: Banka bilgisine göre üyenin sepetindeki ürünlere göre uygun taksit listesini döner.
       parameters:
         - name: cardNumber
           in: path
@@ -10935,7 +10935,7 @@ paths:
     post:
       tags:
         - WebSiteOrders
-      summary: Kredi kartı ile siparişin oluşturulması
+      summary: Siparişin oluşturulması için kullanılır. Ödeme işlemi tamamlanmadan önce tetiklenir
       requestBody:
         description: Create order request.
         content:
@@ -10965,7 +10965,7 @@ paths:
     post:
       tags:
         - WebSiteOrders
-      summary: Mobil için siparişin oluşturulması.
+      summary: Mobil uygulama için siparişin oluşturulmasında kullanılır. Ödeme işlemi tamamlanmadan önce tetiklenir
       requestBody:
         description: Create order request.
         content:
@@ -10995,7 +10995,7 @@ paths:
     post:
       tags:
         - WebSiteOrders
-      summary: Sipariş Başarılı.
+      summary: Ödeme işlemi başarılı bir şekilde sonuçlandıktan sonra tetiklenir. Siparişin ödemesinin de alındığını başarılı bir şekilde tamamlandığına dair gerekli kolonları günceller.
       requestBody:
         description: Order success request.
         content:
@@ -11025,7 +11025,7 @@ paths:
     post:
       tags:
         - WebSiteOrders
-      summary: sipariş PaymentId alanı update eder.
+      summary: iyzico dan dönen PaymentId değerini sipariş tablosuna yazma işlemini yapar.
       requestBody:
         description: The model.
         content:
@@ -11055,7 +11055,7 @@ paths:
     post:
       tags:
         - WebSiteOrders
-      summary: Teslim edilen bir ürüne yorum yapmak.
+      summary: Teslim edilen bir ürüne yorum eklemek için kullanılır
       requestBody:
         description: New product comment request.
         content:
@@ -11699,7 +11699,7 @@ paths:
     get:
       tags:
         - WebSiteProducts
-      summary: Cancels the mail list.
+      summary: Üyenin fiyat alarm listesinden çıkatılması için kullanılır.
       parameters:
         - name: productId
           in: query
